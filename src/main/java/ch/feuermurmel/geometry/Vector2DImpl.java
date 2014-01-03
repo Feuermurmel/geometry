@@ -1,12 +1,22 @@
 package ch.feuermurmel.geometry;
 
-final class Vector2DImpl implements Vector2D {
+final class Vector2DImpl extends AbstractVector<Vector2D> implements Vector2D {
 	private final double x;
 	private final double y;
 
 	Vector2DImpl(double x, double y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	@Override
+	public double getX() {
+		return x;
+	}
+
+	@Override
+	public double getY() {
+		return y;
 	}
 
 	@Override
@@ -33,11 +43,6 @@ final class Vector2DImpl implements Vector2D {
 	}
 
 	@Override
-	public double dotProduct(Vector2D vec) {
-		return x * vec.getX() + y * vec.getY();
-	}
-
-	@Override
 	public Vector2D plus(Vector2D vec) {
 		return Geometries.vector(x + vec.getX(), y + vec.getY());
 	}
@@ -48,17 +53,12 @@ final class Vector2DImpl implements Vector2D {
 	}
 
 	@Override
+	public double dotProduct(Vector2D vec) {
+		return x * vec.getX() + y * vec.getY();
+	}
+
+	@Override
 	public String toString() {
-		return String.format("Vector2d(x = %s, y = %s)", x, y);
-	}
-
-	@Override
-	public double getX() {
-		return x;
-	}
-
-	@Override
-	public double getY() {
-		return y;
+		return String.format("Vector2D(x = %s, y = %s)", x, y);
 	}
 }

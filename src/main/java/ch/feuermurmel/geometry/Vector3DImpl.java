@@ -1,6 +1,6 @@
 package ch.feuermurmel.geometry;
 
-final class Vector3DImpl implements Vector3D {
+final class Vector3DImpl extends AbstractVector<Vector3D> implements Vector3D {
 	private final double x;
 	private final double y;
 	private final double z;
@@ -54,5 +54,10 @@ final class Vector3DImpl implements Vector3D {
 	@Override
 	public Vector3D crossProduct(Vector3D vec) {
 		return new Vector3DImpl(y * vec.getZ() - z * vec.getY(), z * vec.getX() - x * vec.getZ(), x * vec.getY() - y * vec.getX());
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Vector2D(x = %s, y = %s, z = %s)", x, y, z);
 	}
 }
